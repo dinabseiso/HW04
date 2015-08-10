@@ -21,17 +21,25 @@
 
 ################################################################################
 # Imports
-
+import math
 
 # Body
 
+def eval_loop():
+	aRequest = raw_input("Let's do some math. Enter some math for me to do (when you do not want to do any more math, type 'done': \n")
+	while True:
+		if aRequest == "done" : 
+			break
+		print eval(aRequest)
+		aRequest = raw_input("Great! Again (Type 'done' when you've had enough)? \n")
+	return aRequest
 
 
 
 ################################################################################
 def main():
-    pass # Remove this line and uncomment below once eval_loop is defined.
-    # eval_loop()
+    
+    eval_loop()
     
 
 if __name__ == '__main__':

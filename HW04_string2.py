@@ -16,8 +16,19 @@
 # If the string length is less than 3, leave it unchanged.
 # Return the resulting string.
 def verbing(s):
-  # +++your code here+++
-  return
+  if len(s) >= 3 : 
+    ending = len(s) - 3
+    if s[ending:] == "ing" : 
+      suffix = "ly"
+      transformed = s + suffix
+      return transformed
+    else : 
+      suffix = "ing"
+      transformed = s + suffix
+      return transformed
+  else :
+    return s
+  
 
 
 # E. not_bad
@@ -29,8 +40,16 @@ def verbing(s):
 # So 'This dinner is not that bad!' yields:
 # This dinner is good!
 def not_bad(s):
-  # +++your code here+++
-  return
+  originalSentence = s
+  newSentence = ""
+  found1 = s.find("not") # find() will return index of first instance of string "not"
+  found2 = s.find("bad")
+  if found1 >= 0 and found1 < found2: # If "not" is not found in the string, it will automatically be set to -1 
+      newSentence = s[:found1] + "good" + s[found2 + 3:]
+      return newSentence 
+  else :
+    return originalSentence
+    
 
 
 # F. front_back
@@ -41,8 +60,21 @@ def not_bad(s):
 # Given 2 strings, a and b, return a string of the form
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
-  # +++your code here+++
-  return
+  if len(a) % 2.0 == 0 :
+    aFront = a[:len(a) / 2]
+    anEnd = a[len(a) / 2:]
+  else :
+    aFront = a[:len(a) / 2 + 1]
+    anEnd = a[len(a) / 2  + 1:]
+  if len(b) % 2.0 == 0 :
+    bFront = b[:len(b) / 2]
+    bEnd = b[len(b) / 2:]
+  else :
+    bFront = b[:len(b) / 2 + 1]
+    bEnd = b[len(b) / 2  + 1:]  
+  newWord = aFront + bFront + anEnd + bEnd
+  return newWord
+  
 
 
 # Simple provided test() function used in main() to print
@@ -69,6 +101,8 @@ def main():
   test(not_bad('This dinner is not that bad!'), 'This dinner is good!')
   test(not_bad('This tea is not hot'), 'This tea is not hot')
   test(not_bad("It's bad yet not"), "It's bad yet not")
+  test(not_bad("It's doubleplusbad"), "It's doubleplusbad")
+  test(not_bad("So bad"), "So bad")
 
   print
   print 'front_back'
